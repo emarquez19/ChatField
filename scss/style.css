@@ -40,17 +40,16 @@ Chat
 --------------------*/
 .chat {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
+  bottom: 50px;
+  right: 50px;
+  width: 430px;
   height: 80vh;
-  max-height: 500px;
+  max-height: 550px;
   z-index: 2;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -102,6 +101,14 @@ Chat Title
   height: auto;
 }
 
+.chat-title .options {
+  float: right;
+}
+
+.chat-title .options span {
+  font-size: 14px;
+}
+
 /*--------------------
 Messages
 --------------------*/
@@ -128,7 +135,7 @@ Messages
   border-radius: 10px 10px 10px 0;
   background: rgba(0, 0, 0, 0.3);
   margin: 8px 0;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.4;
   margin-left: 35px;
   position: relative;
@@ -265,7 +272,7 @@ Message Box
   flex: 0 1 40px;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
-  padding: 10px;
+  padding: 10px 10px 0px 10px;
   position: relative;
 }
 
@@ -274,12 +281,16 @@ Message Box
   border: none;
   outline: none !important;
   resize: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 11px;
-  height: 17px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  height: 26px;
   margin: 0;
   padding-right: 20px;
-  width: 265px;
+  width: 100%;
+}
+
+.message-box textarea:-webkit-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .message-box textarea:focus:-webkit-placeholder {
@@ -302,6 +313,14 @@ Message Box
 
 .message-box .message-submit:hover {
   color: #f80029;
+}
+
+.tooltip.top .tooltip-inner {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 /*--------------------
