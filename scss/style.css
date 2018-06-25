@@ -125,6 +125,11 @@ Chat Title
   background: rgba(0, 0, 0, 0.2) !important;
 }
 
+.deactivated {
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
 /*--------------------
 Messages
 --------------------*/
@@ -289,6 +294,92 @@ Messages
   background: #d41037 !important;
   margin-left: 7px;
   animation-delay: .3s;
+}
+
+.messages .message h5, .messages .message a {
+  color: #d41037;
+}
+
+.messages .message .full-view {
+  margin-top: -20px;
+  font-size: 150% !important;
+  color: #d41037;
+}
+
+.messages .message .aviso-privacidad {
+  max-height: 25px;
+  overflow: hidden;
+  padding-bottom: 30px;
+  border-bottom: dashed 1px rgba(212, 16, 55, 0.3);
+}
+
+.messages .message .terminos {
+  max-height: 25px;
+  overflow: hidden;
+  padding-bottom: 30px;
+  border-bottom: dashed 1px rgba(212, 16, 55, 0.3);
+}
+
+.messages .message #btn-toggle-aviso {
+  float: right !important;
+  top: 8px !important;
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+}
+
+.messages .message #btn-toggle-terminos {
+  float: right !important;
+  top: 8px !important;
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+}
+
+.auto-height {
+  height: 100% !important;
+  max-height: 100% !important;
+}
+
+.hide {
+  display: none;
+}
+
+.to-hide {
+  display: none !important;
+}
+
+/*--------------------
+CheckBox
+--------------------*/
+.control-check {
+  margin-top: 10px;
+}
+
+.control-check label {
+  font-size: 14px !important;
+  margin-top: 5px !important;
+  padding: 5px 10px 10px;
+  border: solid 1px #d41037;
+}
+
+.control-check a {
+  font-size: 13px !important;
+  margin-left: 10px !important;
+  margin-top: 5px !important;
+  color: #d41037;
+  padding: 8px 10px;
+  border: solid 1px #d41037;
+  text-decoration: none;
+  background: #d41037;
+  color: #fff !important;
+  margin-top: -3px !important;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.control-check a:hover {
+  background: #c41135 !important;
 }
 
 /*--------------------
