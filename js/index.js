@@ -91,7 +91,6 @@ var $minimizeBox = $("#close-box");
 var $messageInput = $(".message-input");
 
 
-
 // Funciones de la ventana CHAT
 function clearActiveOptions(){
   $activeOptions.removeClass("active-option");
@@ -196,6 +195,7 @@ $messageInput.focus(function (){
   var $conditionOpened = $("#chat-box").attr("data-opened");
   if ($conditionOpened == 'open') {
     $("#chat-box .options").removeClass("deactivated");
+    updateScrollbar();
   }
 });
 
@@ -236,10 +236,17 @@ var steps = [
   'Para continuar, le pido por favor que lea y acepte nuestro Aviso de Privacidad, así como los términos y condiciones del servicio.',
 
   // 1
-  '<h5>Aviso de Privacidad</h5><a href="#" id="btn-toggle-aviso">Ver Contenido</a><p class="aviso-privacidad">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label><input type="checkbox" id="acepto-aviso" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
+  '<h5>Aviso de Privacidad</h5><a href="#" id="btn-toggle-aviso">Ver Contenido</a><p class="aviso-privacidad">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label id="acepto-aviso-label">Acepto</label><label><input type="checkbox" id="acepto-aviso" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
 
   // 2
-  '<h5>Términos y Condiciones</h5><a href="#" id="btn-toggle-terminos">Ver Contenido</a><p class="terminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label><input type="checkbox" id="acepto-terminos" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>'
+  '<h5>Términos y Condiciones</h5><a href="#" id="btn-toggle-terminos">Ver Contenido</a><p class="terminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label id="acepto-terminos-label">Acepto</label><label><input type="checkbox" id="acepto-terminos" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
+
+  // 3
+  '<h5>¡Ok, comencemos!</h5>',
+
+  // 4
+  '<h5>Términos y Condiciones</h5><a href="#" id="btn-toggle-terminos">Ver Contenido</a><p class="terminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label id="acepto-terminos-label">Acepto</label><label><input type="checkbox" id="acepto-terminos" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
+
 
 ]
 
@@ -313,4 +320,67 @@ function flowStep2() {
   }, 500 + (Math.random() * 20) * 100);
 }
 
+function flowStep3() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[3] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    setDate();
+    updateScrollbar();
+    setTimeout (function () {
+      flowStep4();
+    }, 1000);
+    i++;
+  }, 500 + (Math.random() * 20) * 100);
+}
 
+function flowStep4() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[4] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    setDate();
+    updateScrollbar();
+    // setTimeout (function () {
+    //   flowStep4();
+    // }, 1000);
+    i++;
+  }, 500 + (Math.random() * 20) * 100);
+}
+
+function hideStep2(){
+  $("#acepto-aviso").parent().hide();
+  $("#acepto-terminos").parent().hide();
+
+  $("#acepto-aviso-label").show();
+  $("#acepto-terminos-label").show();
+}
+
+function goFlowStep3(){
+  $.when( hideStep2() ).done(function() {
+      flowStep3();
+  });
+}
+
+
+$(document).on("click", "#acepto-aviso", function() {
+  if ($("#acepto-aviso").is(':checked') && $("#acepto-terminos").is(':checked')) {
+    goFlowStep3();
+  }
+  updateScrollbar();
+});
+
+$(document).on("click", "#acepto-terminos", function() {
+  if ($("#acepto-aviso").is(':checked') && $("#acepto-terminos").is(':checked')) {
+    goFlowStep3();
+  }
+  updateScrollbar();
+});

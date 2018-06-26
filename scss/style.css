@@ -311,6 +311,7 @@ Messages
   overflow: hidden;
   padding-bottom: 30px;
   border-bottom: dashed 1px rgba(212, 16, 55, 0.3);
+  text-align: justify;
 }
 
 .messages .message .terminos {
@@ -318,6 +319,7 @@ Messages
   overflow: hidden;
   padding-bottom: 30px;
   border-bottom: dashed 1px rgba(212, 16, 55, 0.3);
+  text-align: justify;
 }
 
 .messages .message #btn-toggle-aviso {
@@ -347,6 +349,10 @@ Messages
 
 .to-hide {
   display: none !important;
+}
+
+#acepto-aviso-label, #acepto-terminos-label {
+  display: none;
 }
 
 /*--------------------

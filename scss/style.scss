@@ -309,12 +309,14 @@ Messages
       overflow: hidden;
       padding-bottom: 30px;
       border-bottom: dashed 1px rgba(212,16,55,0.3);
+      text-align: justify;
     }
     .terminos{
       max-height: 25px;
       overflow: hidden;
       padding-bottom: 30px;
       border-bottom: dashed 1px rgba(212,16,55,0.3);
+      text-align: justify;
     }
     #btn-toggle-aviso {
       float: right!important;
@@ -343,6 +345,11 @@ Messages
 .to-hide {
   display: none!important;
 }
+
+#acepto-aviso-label, #acepto-terminos-label {
+display: none;
+}
+
 
 /*--------------------
 CheckBox
