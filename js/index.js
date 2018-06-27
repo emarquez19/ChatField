@@ -56,11 +56,6 @@ $(window).on('keydown', function(e) {
   }
 })
 
-var Fake = [
-  'Hola! ¿En que puedo ayudarle?'
-  // 'Para continuar, le pido por favor que lea y acepte nuestro Aviso de Privacidad, así como los términos y condiciones del servicio.'
-]
-
 function fakeMessage() {
   if ($('.message-input').val() != '') {
     return false;
@@ -69,10 +64,9 @@ function fakeMessage() {
   updateScrollbar();
   setTimeout(function() {
     $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('#saludo').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
     setDate();
     updateScrollbar();
-    i++;
   }, 500 + (Math.random() * 20) * 100);
 }
 
@@ -89,6 +83,8 @@ var $this = $("this");
 var $activeOptions = $("#chat-box .options li");
 var $minimizeBox = $("#close-box");
 var $messageInput = $(".message-input");
+var $personalData = $('#personal-data');
+var $dataToPreventExpandClass = $('.data-form-prevent-expanda');
 
 
 // Funciones de la ventana CHAT
@@ -138,11 +134,13 @@ function expandBox(){
   clearPositions(3);
   if ($chatbox.hasClass("expandedBox")) {
     $chatbox.removeClass("expandedBox", 200, "easeInSine");
+    $dataToPreventExpandClass.removeClass('maximum-width');
     setTimeout (function () {
       clearActiveOptions();
     }, 300);
   } else {
     $chatbox.addClass("expandedBox", 200, "easeInSine");
+    $dataToPreventExpandClass.addClass('maximum-width');
   }
 }
 
@@ -230,28 +228,7 @@ setTimeout(function (){
 }, 9000);
 
 
-// Vistas para las respuestas del Chat
-var steps = [
-  // 0
-  'Para continuar, le pido por favor que lea y acepte nuestro Aviso de Privacidad, así como los términos y condiciones del servicio.',
-
-  // 1
-  '<h5>Aviso de Privacidad</h5><a href="#" id="btn-toggle-aviso">Ver Contenido</a><p class="aviso-privacidad">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label id="acepto-aviso-label">Acepto</label><label><input type="checkbox" id="acepto-aviso" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
-
-  // 2
-  '<h5>Términos y Condiciones</h5><a href="#" id="btn-toggle-terminos">Ver Contenido</a><p class="terminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label id="acepto-terminos-label">Acepto</label><label><input type="checkbox" id="acepto-terminos" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
-
-  // 3
-  '<h5>¡Ok, comencemos!</h5>',
-
-  // 4
-  '<h5>Términos y Condiciones</h5><a href="#" id="btn-toggle-terminos">Ver Contenido</a><p class="terminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><div class="full-view"><small>...</small><div class="control-check"><label id="acepto-terminos-label">Acepto</label><label><input type="checkbox" id="acepto-terminos" value="acepto"> Acepto</label><a href="#">Ver Detalles</a></div></div>',
-
-
-]
-
 // EMULANDO TODOS LOS MENSAJES
-
 // notificacion
 function flowStep0() {
   if ($('.message-input').val() != '') {
@@ -261,15 +238,12 @@ function flowStep0() {
   updateScrollbar();
   setTimeout(function() {
     $('.message.loading').remove();
-    $('<div class="message new" id="aviso-message"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[0] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('#paracontinuar').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
     setDate();
     updateScrollbar();
-    i++;
-    flowStep1();
-    setTimeout (function () {
-      flowStep2();
+    setTimeout(function (){
+      flowStep1();
     }, 1000);
-    
   }, 500 + (Math.random() * 20) * 100);
 }
 
@@ -282,10 +256,12 @@ function flowStep1() {
   updateScrollbar();
   setTimeout(function() {
     $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[1] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('#aviso-message').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
     setDate();
     updateScrollbar();
-    i++;
+    setTimeout(function (){
+      flowStep2();
+    }, 1000);
   }, 500 + (Math.random() * 20) * 100);
 }
 
@@ -301,9 +277,6 @@ $(document).on("click", "#btn-toggle-terminos", function() {
   updateScrollbar();
 });
 
-// $("#acepto-aviso").click(function (){
-//   flowStep2();
-// });
 
 function flowStep2() {
   if ($('.message-input').val() != '') {
@@ -313,48 +286,12 @@ function flowStep2() {
   updateScrollbar();
   setTimeout(function() {
     $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[2] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('#terminos-block').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');    
     setDate();
     updateScrollbar();
-    i++;
   }, 500 + (Math.random() * 20) * 100);
 }
 
-function flowStep3() {
-  if ($('.message-input').val() != '') {
-    return false;
-  }
-  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-  updateScrollbar();
-  setTimeout(function() {
-    $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[3] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    setDate();
-    updateScrollbar();
-    setTimeout (function () {
-      flowStep4();
-    }, 1000);
-    i++;
-  }, 500 + (Math.random() * 20) * 100);
-}
-
-function flowStep4() {
-  if ($('.message-input').val() != '') {
-    return false;
-  }
-  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-  updateScrollbar();
-  setTimeout(function() {
-    $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="img/android_black.svg" /></figure>' + steps[4] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    setDate();
-    updateScrollbar();
-    // setTimeout (function () {
-    //   flowStep4();
-    // }, 1000);
-    i++;
-  }, 500 + (Math.random() * 20) * 100);
-}
 
 function hideStep2(){
   $("#acepto-aviso").parent().hide();
@@ -370,7 +307,6 @@ function goFlowStep3(){
   });
 }
 
-
 $(document).on("click", "#acepto-aviso", function() {
   if ($("#acepto-aviso").is(':checked') && $("#acepto-terminos").is(':checked')) {
     goFlowStep3();
@@ -384,3 +320,111 @@ $(document).on("click", "#acepto-terminos", function() {
   }
   updateScrollbar();
 });
+
+
+
+
+function flowStep3() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('#comencemos').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new'); 
+    setDate();
+    updateScrollbar();
+    setTimeout (function () {
+      flowStep4();
+    }, 1000);
+  }, 500 + (Math.random() * 20) * 100);
+}
+
+function flowStep4() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('#personal-data').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
+    setDate();
+    updateScrollbar();
+  }, 500 + (Math.random() * 20) * 100);
+}
+
+$(document).on("click", "#btn-personal-data", function() {
+  $(this).addClass('to-hide');
+  flowStep5();
+  updateScrollbar();
+});
+
+function flowStep5() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('#cuentenos').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
+    setDate();
+    updateScrollbar();
+    setTimeout (function () {
+      flowStep6();
+    }, 1000);
+  }, 500 + (Math.random() * 20) * 100);
+}
+
+function flowStep6() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('#domicilio').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
+    setDate();
+    updateScrollbar();
+  }, 500 + (Math.random() * 20) * 100);
+}
+
+$(document).on("click", "#btn-domicilio", function() {
+  $(this).addClass('to-hide');
+  flowStep7();
+  updateScrollbar();
+});
+
+function flowStep7() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('#autorizacionbc').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
+    setDate();
+    updateScrollbar();
+    setTimeout (function () {
+      flowStep8();
+    }, 1000);
+  }, 500 + (Math.random() * 20) * 100);
+}
+
+function flowStep8() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="img/android_black.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('#autorizacionbcacepto').appendTo($('.mCSB_container')).removeClass('to-hide').addClass('new');
+    setDate();
+    updateScrollbar();
+  }, 500 + (Math.random() * 20) * 100);
+}

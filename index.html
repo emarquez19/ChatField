@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Tpl</title>
+  <title>Exitus Credit</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css'>
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
@@ -23,7 +23,7 @@
     <figure class="avatar">
       <img src="img/logo-150.png" />
     </figure>
-    <ul class="options deactivated" data-toggle="tooltip" title="Fijar a la Izquierda" data-placement="bottom">
+    <ul class="options deactivated">
         <li id="pin-left" data-toggle="tooltip" title="Fijar a la Izquierda" data-placement="bottom"><i class="material-icons">arrow_left</i></li>
         <li id="pin-right" data-toggle="tooltip" title="Fijar a la Derecha" data-placement="bottom"><i class="material-icons">arrow_right</i></li>
         <li id="expand-box" data-toggle="tooltip" title="Ver en pantalla completa" data-placement="bottom"><i class="material-icons">fullscreen</i></li>
@@ -31,7 +31,244 @@
     </ul>
   </div>
   <div class="messages">
-    <div class="messages-content"></div>
+    <div class="messages-content">
+      
+      <!--Saludo-->
+      <div class="message new to-hide" id="saludo">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        Hola! ¿En que puedo ayudarle?
+      </div>
+
+      
+      <!--Respuesta a la solicitud de credito-->
+      <div class="message new to-hide" id="paracontinuar">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        Para continuar, le pido por favor que lea y acepte nuestro Aviso de Privacidad, así como los términos y condiciones del servicio.
+      </div>
+
+
+      <!--Aviso de privacidad-->
+      <div class="message new to-hide" id="aviso-message">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h5>Aviso de Privacidad</h5>
+        <a href="#" id="btn-toggle-aviso">Ver Contenido</a>
+        <p class="aviso-privacidad">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="full-view">
+          <small>...</small>
+          <div class="control-check">
+            <label id="acepto-aviso-label">Acepto</label>
+            <label><input type="checkbox" id="acepto-aviso" value="acepto"> Acepto</label>
+            <a href="#">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!--terminos y condiciones-->
+      <div class="message new to-hide" id="terminos-block">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h5>Términos y Condiciones</h5>
+        <a href="#" id="btn-toggle-terminos">Ver Contenido</a>
+        <p class="terminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="full-view">
+          <small>...</small>
+          <div class="control-check">
+            <label id="acepto-terminos-label">Acepto</label>
+            <label><input type="checkbox" id="acepto-terminos" value="acepto"> Acepto</label>
+            <a href="#">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!--Comencemos-->
+      <div class="message new to-hide" id="comencemos">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h5>¡Ok, comencemos!</h5>
+      </div>
+
+
+      <!--Personal data-->
+      <div class="message new to-hide" id="personal-data">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h6 class="bold mb-10">Por favor capture sus datos personales y los datos de su pensión</h6>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="nombre">Primer Nombre <span>*</span></label>
+              <input type="text" name="nombre" class="form-control">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="nombre2">Segundo Nombre <span>*</span></label>
+                <input type="text" name="nombre2" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="apellido">Apellido Paterno <span>*</span></label>
+                <input type="text" name="apellido" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="apellido2">Apellido Materno <span>*</span></label>
+                <input type="text" name="apellido2" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="fecha">Fecha de Nacimiento <span>*</span></label>
+                <input type="date" name="fecha" class="form-control" placeholder="dd/mm/aaaa">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="rfc">RFC <span>*</span></label>
+                <input type="text" name="rfc" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="tlf">Teléfono Celular <span>*</span></label>
+                <input type="number" name="tlf" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="email">Correo Electrónico <span>*</span></label>
+                <input type="email" name="email" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="ingreso">Ingreso Mensual Neto <span>*</span></label>
+                <input type="number" name="ingreso" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="banco">Banco donde Recibe la pensión <span>*</span></label>
+                <select name="banco" class="form-control">
+                    <option value="">Banamex</option>
+                    <option value="">Bancomer</option>
+                    <option value="">Banorte</option>
+                    <option value="">Santander</option>
+                    <option value="">HSBC</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+              <div class="form-group">
+                  <button type="button" class="btn btn-raised btn-success mt-10" id="btn-personal-data">Enviar Datos</button>
+              </div>
+          </div>
+        </div>  
+      </div>
+
+
+      <!--Cuentenos-->
+      <div class="message new to-hide" id="cuentenos">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h5>Cuéntenos ¿Donde Vive?</h5>
+      </div>
+
+
+      <!--Domicilio-->
+      <div class="message new to-hide data-form-prevent-expand" id="domicilio">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h6 class="bold mb-10">Por favor capture su domicilio actual</h6>
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-12">
+            <div class="form-group">
+              <label for="calle">Calle <span>*</span></label>
+              <input type="text" name="calle" class="form-control">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-5 col-sm-12">
+              <div class="form-group">
+                <label for="number">Exterior <span>*</span></label>
+                <input type="text" name="exterior" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="interior">Interior </label>
+                <input type="number" name="interior" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="cp">Código Postal <span>*</span></label>
+                <input type="number" name="cp" class="form-control">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="colonia">Colonia <span>*</span></label>
+                <select name="colonia" class="form-control">
+                  <option value="">Ciudad del Sol</option>
+                  <option value="">Chapalita</option>
+                  <option value="">San Juan de la Cruz</option>
+                  <option value="">Paseos del Sol</option>
+                  <option value="">La Giralda</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="municipio">Municipio <span>*</span></label>
+                <select name="municipio" class="form-control">
+                  <option value="">Guadalajara</option>
+                  <option value="">Zapopan</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="estado">Estado <span>*</span></label>
+                <select name="estado" class="form-control">
+                  <option value="">Aguas Calientes</option>
+                  <option value="">Jalisco</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+              <div class="form-group">
+                  <button type="button" class="btn btn-raised btn-success mt-10" id="btn-domicilio">Enviar Datos</button>
+              </div>
+          </div>
+        </div>  
+      </div>
+
+
+      <!--mensaje de autorizacion-->
+      <div class="message new to-hide" id="#autorizacionbc">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        Para continuar, lea y acepte la autorización de consulta a BC.
+      </div>
+
+
+      <!--acepto la autorizacion-->
+      <div class="message new to-hide" id="acuerdobc-block">
+        <figure class="avatar"><img src="img/android_black.svg" /></figure>
+        <h5>Términos y Condiciones</h5>
+        <a href="#" id="btn-toggle-terminos">Ver Contenido</a>
+        <p class="acuerdobc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="full-view">
+          <small>...</small>
+          <div class="control-check">
+            <label id="acepto-acuerdobc-label">Acepto</label>
+            <label><input type="checkbox" id="acepto-termacuerdobcinos" value="acepto"> Acepto</label>
+            <a href="#">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
   </div>
   <div class="message-box">
     <textarea type="text" class="message-input" placeholder="¿En que puedo ayudarte?"></textarea>
